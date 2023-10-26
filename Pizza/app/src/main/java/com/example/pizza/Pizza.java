@@ -19,6 +19,11 @@ public class Pizza {
         this.toppings = new ArrayList<>();
     }
 
+    public void removeTopping(Topping topping){
+        if(this.getToppings().contains(topping)){
+            this.toppings.remove(topping);
+        }
+    }
 
     @NonNull
     @Override
