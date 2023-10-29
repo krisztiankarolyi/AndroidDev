@@ -6,8 +6,10 @@ import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
-
+import android.widget.Toast;
+import androidx.appcompat.app.AppCompatDelegate;
 public class MainActivity extends AppCompatActivity {
     ListView myList;
     Integer[] flags = {
@@ -38,11 +40,21 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         setContentView(R.layout.activity_main);
         myList = findViewById(R.id.lista);
         CustomListViewAdapter adapter = new CustomListViewAdapter(this, flags, iso_codes, names, buyPrices, sellPrices);
         myList.setAdapter(adapter);
 
+        myList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(MainActivity.this, adapter.getName(position)+": "+adapter.getBuyPArray(position), Toast.LENGTH_LONG).show();
+            }
+        });
+
     }
+
+
 
 }

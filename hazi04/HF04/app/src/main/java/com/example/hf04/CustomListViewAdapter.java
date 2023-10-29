@@ -46,4 +46,30 @@ public class CustomListViewAdapter extends ArrayAdapter {
         sellP.setText(sellPArray[position]);
         return rowView;
     }
+
+    @NonNull
+    @Override
+    public Activity getContext() {
+        return context;
+    }
+
+    public int getImage(int position) {
+        return images[position];
+    }
+
+    public String getIso(int position) {
+        return isos[position];
+    }
+
+    public String getName(int position) {
+        return names[position];
+    }
+
+    public String getBuyPArray(int position) {
+        return buyPArray[position];
+    }
+
+    public String getSellPArray(int position) {
+        return sellPArray[position];
+    }
 }
