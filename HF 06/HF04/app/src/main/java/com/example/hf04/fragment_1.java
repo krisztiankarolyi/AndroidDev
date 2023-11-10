@@ -73,8 +73,7 @@ public class fragment_1 extends Fragment {
     public static fragment_1 newInstance(String param1, String param2) {
         fragment_1 fragment = new fragment_1();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+
         fragment.setArguments(args);
         return fragment;
     }
@@ -95,34 +94,33 @@ public class fragment_1 extends Fragment {
         super.onCreate(savedInstanceState);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
-        View view = inflater.inflate(R.layout.fragment_1, container, false);
-        myList = view.findViewById(R.id.currencies_list); // Az itt hozzáférhetünk a ListView-hoz
+        View rootView = inflater.inflate(R.layout.fragment_1, container, false);
+        myList = rootView.findViewById(R.id.currencies_list); // Az itt hozzáférhetünk a ListView-hoz
         Context context = getActivity().getApplicationContext();
         CustomListViewAdapter adapter = new CustomListViewAdapter(getActivity(), flags, iso_codes, names, buyPrices, sellPrices);
         myList.setAdapter(adapter);
-        FragmentManager fm = getParentFragmentManager();
+
 
         myList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (view instanceof TextView) {
-                    String isoCode = iso_codes[position]; // Az ISO kód kiolvasása
-                    String buyPrice = buyPrices[position]; // A vételi ár kiolvasása
+                    String isoCode = iso_codes[position];
+                    String buyPrice = buyPrices[position];
+                    int flag = flags[position];
+                    String name = names[position];
+                    String sellPrice = sellPrices[position];
 
-                    if (fm.findFragmentByTag(FRAG2) != null) {
-                        TextView selectedOpt = getActivity().findViewById(R.id.selectedCurrency);
-                        selectedOpt.setText("You have selected " + isoCode + " - " + buyPrice);
-                    } else {
-                        Intent intent = new Intent(getActivity().getApplicationContext(), ShowItemActivity.class);
-                        intent.putExtra("iso_code", isoCode);
-                        intent.putExtra("buy_price", buyPrice);
-                        startActivity(intent);
-                    }
-                }
+                    Fragment_2 fragment2 = Fragment_2.newInstance(isoCode, flag, buyPrice, sellPrice, name);
+
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
+                            .replace(R.id.container, fragment2)
+                            .addToBackStack(null)
+                            .commit();
             }
         });
 
-        return view;
+        return rootView;
         // Inflate the layout for this fragment
        // return inflater.inflate(R.layout.fragment_1, container, false);
     }
