@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <EditText
+        android:id="@+id/num2"
+        android:layout_width="135dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="165dp"
+        android:layout_marginEnd="49dp"
+        android:editable="false"
+        android:ems="10"
+        android:enabled="false"
+        android:inputType="number"
+        android:text="0"
+        android:textColor="#FB1212"
+        app:layout_constraintBottom_toTopOf="@+id/num2incbtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/num1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <EditText
+        android:id="@+id/num1"
+        android:layout_width="134dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="166dp"
+        android:layout_marginEnd="10dp"
+        android:editable="false"
+        android:ems="10"
+        android:enabled="false"
+        android:inputType="number"
+        android:text="0"
+        android:textColor="#0DE856"
+        app:layout_constraintBottom_toTopOf="@+id/num1incbtn"
+        app:layout_constraintEnd_toStartOf="@+id/num2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <Button
+        android:id="@+id/num1incbtn"
+        android:layout_width="130dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="10dp"
+        android:text="Növel"
+        app:layout_constraintBottom_toTopOf="@+id/secondActivityBtn"
+        app:layout_constraintEnd_toStartOf="@+id/num2incbtn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/num1"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <Button
+        android:id="@+id/num2incbtn"
+        android:layout_width="130dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="37dp"
+        android:layout_marginEnd="49dp"
+        android:layout_marginBottom="40dp"
+        android:text="Növel"
+        android:onClick="increaseNum2"
+        app:layout_constraintBottom_toTopOf="@+id/secondActivityBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/num1incbtn"
+        app:layout_constraintTop_toBottomOf="@+id/num2"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <Button
+        android:id="@+id/secondActivityBtn"
+        android:layout_width="158dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="10dp"
+        android:text="Second Activity"
+        app:layout_constraintBottom_toTopOf="@+id/ThirdActivityBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/num1incbtn"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <Button
+        android:id="@+id/ThirdActivityBtn"
+        android:layout_width="156dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="127dp"
+        android:layout_marginEnd="128dp"
+        android:layout_marginBottom="217dp"
+        android:text="Third Activity"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/secondActivityBtn"
+        app:layout_constraintVertical_bias="0.5" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
